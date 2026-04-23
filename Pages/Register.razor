@@ -1,0 +1,23 @@
+@page "/register"
+
+<EditForm Model="user" OnValidSubmit="HandleSubmit">
+    <InputText @bind-Value="user.Name" placeholder="Nombre" />
+    <ValidationMessage For="@(() => user.Name)" />
+
+    <button type="submit">Registrarse</button>
+</EditForm>
+
+@code {
+    private User user = new User();
+
+    private void HandleSubmit()
+    {
+        Console.WriteLine("Usuario registrado");
+    }
+
+    public class User
+    {
+        [Required]
+        public string Name { get; set; }
+    }
+}

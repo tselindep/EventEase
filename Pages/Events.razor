@@ -1,0 +1,18 @@
+@page "/events"
+@inject EventService EventService
+
+<h1>Eventos</h1>
+
+@foreach (var ev in events)
+{
+    <EventCard Event="ev" />
+}
+
+@code {
+    private List<Event> events;
+
+    protected override void OnInitialized()
+    {
+        events = EventService.GetEvents();
+    }
+}
